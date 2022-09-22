@@ -1,30 +1,22 @@
 // This tailnet's ACLs are maintained in https://github.com/the-technat/networking
 {
-	// Declare static groups of users beyond those in the identity service.
-  // comment
-	"groups": {
-		"group:example": ["user1@example.com", "user2@example.com"],
-	},
-
-	// Declare convenient hostname aliases to use in place of IP addresses.
 	"hosts": {
-		"example-host-1": "100.100.100.100",
+		"silvernas": "100.92.106.66",
+    "admin": "100.67.200.50",
+    "eve": "100.116.94.116",
+    "wall-e": "100.71.255.13"
 	},
 
-	// Access control lists.
 	"acls": [
-		// Match absolutely everything.
-		// Comment this section out if you want to define specific restrictions.
-		{"action": "accept", "users": ["*"], "ports": ["*:*"]},
+    // Allow admin devices to access everything
+		{"action": "accept", "src": ["the-technat@github"], "dst": ["*"]},
 	],
 	"ssh": [
-		// Allow all users to SSH into their own devices in check mode.
-		// Comment this section out if you want to define specific restrictions.
 		{
+      // Allow admin devices to ssh into everything
 			"action": "check",
-			"src":    ["autogroup:members"],
-			"dst":    ["autogroup:self"],
-			"users":  ["autogroup:nonroot", "root"],
+			"src":    ["the-technat@github"],
+			"dst":    ["*"],
 		},
 	],
 }
