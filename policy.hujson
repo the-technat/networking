@@ -1,6 +1,7 @@
 // This tailnet's ACLs are maintained in https://github.com/the-technat/networking
 {
 	// Declare static groups of users beyond those in the identity service.
+  // comment
 	"groups": {
 		"group:example": ["user1@example.com", "user2@example.com"],
 	},
